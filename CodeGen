@@ -1,6 +1,66 @@
 import re
 from playwright.sync_api import Playwright, sync_playwright, expect
 
+# Default Data For RMS
+DEFAULT_CLAIM_DATA = {
+    # Main Info
+    "reported_by_search": "property owner",
+    "reported_by_select": "Property Owner",
+    "referred_by_search": "Willebrandt, ERC-Colin",
+    "referred_by_select": "Willebrandt, ERC-Colin",
+    "provider_office_search": "PDR of Ralei",
+    "provider_office_select": "PDR of Ralei",
+    "client_search": "Residentials",
+    "client_select": "Residentials",
+
+    # Customer Information
+    "first_name": "TestFirstName",
+    "last_name": "TestLastName",
+    "email": "TestEmail@Gmail.com",
+    "address": "248 Turner Oaks Dr",
+    "zip_code": "27519",
+    "phone": "19195551234",
+
+    # Loss Details
+    "loss_date": date.today().strftime("%Y/%m/%d"),
+    "job_name": "TestFirstName, TestLastName",
+    "loss_type_search": "water",
+    "loss_type_select": "Water - Sewer Backup, Black,",
+    "job_type_select": "Appraisal/Consulting",
+    "loss_description": "This is a test loss description created by an automated script.",
+
+    # Internal Participants
+    "internal_estimator_search": "RENC",
+    "internal_estimator_select": "RENC, estimators",
+    "internal_pm_search": "essen",
+    "internal_pm_select": "Reescano, Essence",
+    "internal_supervisor_search": "non",
+    "internal_supervisor_select": "None, None",
+    "internal_primary_sales_search": "None",
+    "internal_primary_sales_select": "None, None",
+    "internal_secondary_sales_search": "rhond",
+    "internal_secondary_sales_select": "Rhond",
+    "internal_bizdev_search": "willebran",
+    "internal_bizdev_select": "Willebran",
+    "internal_lead_tech_search": "willebrandt",
+    "internal_lead_tech_select": "Willebrandt, Colin",
+
+    # External Participants
+    "external_adjuster_company_search": "pdr",
+    "external_adjuster_company_select": "PDR-KHTX-JCA",
+    "external_adjuster_individual_select": "JCA, JCA",
+    "external_agent_company_search": "Self",
+    "external_agent_company_select": "Self Pay",
+    "external_agent_individual_select": "Pay, Self",
+    "external_agent_individual_2_select": "Pay, Self",
+    "external_mortgage_company_search": "pdr",
+    "external_mortgage_company_select": "PDR-RENC",
+    "external_mortgage_individual_select": "Varner, Jason",
+    "external_property_mgmt_company_search": "pdr",
+    "external_property_mgmt_company_select": "PDR-KHTX",
+    "external_tpa_company_search": "No",
+    "external_tpa_company_select": "No TPA",
+}
 
 def run(playwright: Playwright) -> None:
     browser = playwright.chromium.launch(headless=False)
